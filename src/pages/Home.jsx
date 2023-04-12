@@ -1,14 +1,32 @@
+import { MoviesList } from 'components/MoviesList';
+import { useState, useEffect } from 'react';
+import { getTrendingMovies } from 'components/api/API';
+import { useLocation } from 'react-router-dom';
+
 const Home = () => {
-  return <div>Home</div>;
+  const [trending, setTrending] = useState([]);
+  const location = useLocation();
 
-  // useEffect(() => {
-  //   return () => {
-  //     effect
-  //   };
-  // }, [input]);
+  useEffect(() => {
+    const createTrendingMovies = async () => {
+      try {
+        const { results } = await getTrendingMovies();
+        setTrending(results);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    createTrendingMovies();
+  });
+
+  return (
+    <main>
+      <h2>Trending today</h2>
+      {trending.length > 0 && (
+        <MoviesList movies={trending} location={location} />
+      )}
+    </main>
+  );
 };
-
 export default Home;
-
-// API_KEY = 'dd434c778f29331c06da952bd2cda993';
-// Example of request = 'https://api.themoviedb.org/3/movie/550?api_key=dd434c778f29331c06da952bd2cda993'
