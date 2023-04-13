@@ -22,7 +22,6 @@ const Movies = () => {
     setRequest(e.currentTarget.value.toLowerCase());
   };
 
-  // const backLinkHref = location.state?.from ?? '/';
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -62,7 +61,6 @@ const Movies = () => {
 
   return (
     <main>
-      {/* <BackLink to={backLinkHref}>Go back</BackLink> */}
       <SearchBox
         onSubmit={handleSubmit}
         value={request}

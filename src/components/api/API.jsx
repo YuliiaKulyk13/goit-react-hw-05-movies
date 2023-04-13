@@ -29,3 +29,13 @@ export const searchMovies = async query => {
     console.log(error);
   }
 };
+
+export const getFullMovie = async movieId => {
+  try {
+    const { data } = await axios.get(`movie/${movieId}`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
