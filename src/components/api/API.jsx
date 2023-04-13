@@ -15,3 +15,17 @@ export const getTrendingMovies = async () => {
     console.log(error);
   }
 };
+
+export const searchMovies = async query => {
+  try {
+    const { data } = await axios.get('search/movie', {
+      params: {
+        query: query,
+      },
+    });
+    console.log(data);
+    return data.results;
+  } catch (error) {
+    console.log(error);
+  }
+};
