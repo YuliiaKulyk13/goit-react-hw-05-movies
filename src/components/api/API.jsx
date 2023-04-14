@@ -33,6 +33,15 @@ export const searchMovies = async query => {
 export const getFullMovie = async movieId => {
   try {
     const { data } = await axios.get(`movie/${movieId}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getCast = async movieId => {
+  try {
+    const { data } = await axios.get(`movie/${movieId}/credits`);
     console.log(data);
     return data;
   } catch (error) {
