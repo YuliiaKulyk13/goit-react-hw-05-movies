@@ -5,7 +5,6 @@ import { SearchBox } from 'components/SearchBox';
 import { searchMovies } from 'components/api/API';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-// import { BackLink } from 'components/BackLink';
 
 const Movies = () => {
   const [request, setRequest] = useState('');
@@ -26,7 +25,7 @@ const Movies = () => {
     e.preventDefault();
 
     if (request.trim() === '') {
-      return toast.warn('Please enter a request!');
+      return toast.info('Please enter a request!');
     }
 
     setMovies([]);
