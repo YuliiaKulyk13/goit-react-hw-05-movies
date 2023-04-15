@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 import { BackLink } from 'components/BackLink/BackLink';
 import { getFullMovie } from 'components/api/API';
 import { Suspense, useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import MovieDescription from 'components/MovieDescription/MovieDescription';
 
 import { AdditionalList, ItemLink } from './MovieDetails.styled';
