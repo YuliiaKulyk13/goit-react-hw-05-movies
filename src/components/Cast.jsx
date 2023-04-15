@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getCast } from './api/API';
 import { Loader } from './Loader';
+import CardCast from './CardCast';
 
 export const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -36,7 +37,7 @@ export const Cast = () => {
     <div>
       {loading && <Loader />}
       {error && <p>{error.message} </p>}
-      {/* <CastCard cast={cast}/> */}
+      <CardCast cast={cast} />
     </div>
   );
 };

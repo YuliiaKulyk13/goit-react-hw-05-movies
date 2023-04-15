@@ -43,7 +43,17 @@ export const getCast = async movieId => {
   try {
     const { data } = await axios.get(`movie/${movieId}/credits`);
     console.log(data);
-    return data;
+    return data.cast;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getReviews = async movieId => {
+  try {
+    const { data } = await axios.get(`movie/${movieId}/reviews`);
+    console.log(data);
+    return data.results;
   } catch (error) {
     console.log(error);
   }

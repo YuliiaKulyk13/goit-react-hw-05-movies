@@ -1,4 +1,4 @@
-import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 import { Loader } from 'components/Loader';
 import { MoviesList } from 'components/MoviesList';
 import { SearchBox } from 'components/SearchBox';
@@ -26,7 +26,7 @@ const Movies = () => {
     e.preventDefault();
 
     if (request.trim() === '') {
-      return toast.error('Please enter a request!');
+      return toast.warn('Please enter a request!');
     }
 
     setMovies([]);
@@ -70,7 +70,7 @@ const Movies = () => {
       {movies.length > 0 && <MoviesList movies={movies} location={location} />}
       {error && <p>{error.message}</p>}
       {loading && <Loader />}
-      <Toaster duration={3000} position={'top-center'} />
+      <ToastContainer autoClose={4000} position={'top-right'} />
     </main>
   );
 };

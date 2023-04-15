@@ -1,7 +1,7 @@
-import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import { BackLink } from 'components/BackLink';
 import { getFullMovie } from 'components/api/API';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import MovieDescription from 'components/MovieDescription';
 
@@ -54,7 +54,9 @@ const MovieDetails = () => {
             </Link>
           </li>
         </ul>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
       {error && <p>{error.message}</p>}
     </div>
