@@ -1,8 +1,10 @@
+import { Form, Input, SearchButton } from './SearchBox.styled';
+
 export const SearchBox = ({ value, onChange, onSubmit }) => {
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <input
+      <Form onSubmit={onSubmit}>
+        <Input
           type="text"
           name="movieName"
           autoComplete="off"
@@ -10,8 +12,8 @@ export const SearchBox = ({ value, onChange, onSubmit }) => {
           placeholder="Search movies"
           onChange={onChange}
         />
-        <button type="submit">Search</button>
-      </form>
+        <SearchButton type="submit">Search</SearchButton>
+      </Form>
     </div>
   );
 };

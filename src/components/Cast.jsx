@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import { getCast } from './api/API';
 import { Loader } from './Loader';
 import CardCast from './CardCast';
+import { CastList } from './Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(null);
 
@@ -19,13 +20,13 @@ export const Cast = () => {
       try {
         const results = await getCast(movieId);
         if (results.length === 0) {
-          return toast.warn('Sorry there are no cast by your request!');
+          return alert('Sorry there are no cast by your request!');
         }
         setCast(results);
         setError(null);
       } catch (error) {
         setError(error);
-        toast.error('Oops,something went wrong.Please try again!');
+        alert('Oops,something went wrong.Please try again!');
       } finally {
         setLoading(false);
       }
@@ -34,10 +35,11 @@ export const Cast = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <CastList>
       {loading && <Loader />}
       {error && <p>{error.message} </p>}
       <CardCast cast={cast} />
-    </div>
+    </CastList>
   );
 };
+export default Cast;

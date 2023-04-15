@@ -1,9 +1,11 @@
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { BackLink } from 'components/BackLink';
 import { getFullMovie } from 'components/api/API';
 import { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import MovieDescription from 'components/MovieDescription';
+import { AdditionalList } from './MovieDetails.styled';
+import { ItemLink } from 'components/MoviesList.styled';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDeatils] = useState([]);
@@ -19,15 +21,13 @@ const MovieDetails = () => {
       try {
         const results = await getFullMovie(movieId);
         if (!results) {
-          return toast.error(
-            'Sorry, there are no matching results by your request!'
-          );
+          return alert('Sorry, there are no matching results by your request!');
         }
         setMovieDeatils(results);
         setError(null);
       } catch (error) {
         setError(error);
-        toast.error(
+        alert(
           'Sorry there are no movies matching your request.Please try again!'
         );
       }
@@ -42,18 +42,18 @@ const MovieDetails = () => {
         {movieDetails && <MovieDescription movieDetails={movieDetails} />}
       </main>
       <div>
-        <ul>
+        <AdditionalList>
           <li>
-            <Link to="cast" state={{ from: backLinkHref }}>
+            <ItemLink to="cast" state={{ from: backLinkHref }}>
               Cast
-            </Link>
+            </ItemLink>
           </li>
           <li>
-            <Link to="reviews" state={{ from: backLinkHref }}>
+            <ItemLink to="reviews" state={{ from: backLinkHref }}>
               Reviews
-            </Link>
+            </ItemLink>
           </li>
-        </ul>
+        </AdditionalList>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>

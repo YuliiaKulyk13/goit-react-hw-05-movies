@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import { Loader } from 'components/Loader';
 import { MoviesList } from 'components/MoviesList';
 import { SearchBox } from 'components/SearchBox';
@@ -25,7 +25,7 @@ const Movies = () => {
     e.preventDefault();
 
     if (request.trim() === '') {
-      return toast.info('Please enter a request!');
+      return alert('Please enter a request!');
     }
 
     setMovies([]);
@@ -42,13 +42,13 @@ const Movies = () => {
       try {
         const results = await searchMovies(movieName);
         if (results.length === 0) {
-          return toast.error('Something went wrong.Please try again!');
+          return alert('Something went wrong.Please try again!');
         }
         setMovies(results);
         setError(null);
       } catch (error) {
         setError(error);
-        toast.error(
+        alert(
           'Sorry there are no movies matching your request.Please try again!'
         );
       } finally {
@@ -69,7 +69,7 @@ const Movies = () => {
       {movies.length > 0 && <MoviesList movies={movies} location={location} />}
       {error && <p>{error.message}</p>}
       {loading && <Loader />}
-      <ToastContainer autoClose={4000} position={'top-right'} />
+      {/* <ToastContainer autoClose={4000} position={'top-right'} /> */}
     </main>
   );
 };

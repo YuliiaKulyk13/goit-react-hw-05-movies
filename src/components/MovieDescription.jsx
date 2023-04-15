@@ -1,3 +1,11 @@
+import {
+  Genres,
+  MovieDescriptionContainer,
+  Overview,
+  TextContainer,
+  Title,
+} from './MovieDescription.styled';
+
 const MovieDescription = ({ movieDetails }) => {
   const { poster_path, release_date, title, vote_average, overview, genres } =
     movieDetails;
@@ -6,19 +14,19 @@ const MovieDescription = ({ movieDetails }) => {
   const userScore = Math.round(vote_average).toFixed(1);
 
   return (
-    <div>
+    <MovieDescriptionContainer>
       <img src={'https://image.tmdb.org/t/p/w300' + poster_path} alt={title} />
-      <div>
-        <h3>
+      <TextContainer>
+        <Title>
           {title} ({movieFullYear})
-        </h3>
-        <p>User Score: {userScore} %</p>
-        <h3>Overview</h3>
+        </Title>
+        <p>User Score: {userScore}%</p>
+        <Overview>Overview</Overview>
         <p>{overview}</p>
-        <h3>Genres</h3>
+        <Genres>Genres</Genres>
         <p>{genres && genres.map(genre => genre.name).join(', ')}</p>
-      </div>
-    </div>
+      </TextContainer>
+    </MovieDescriptionContainer>
   );
 };
 

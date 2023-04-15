@@ -5,8 +5,10 @@ const ReviewsCard = ({ reviews }) => {
         reviews.map(({ id, author, content }) => {
           return (
             <li key={id}>
-              <p>Author: {author}</p>
-              <p>Review: {content}</p>
+              <h3>Author: </h3>
+              {author}
+              <h3>Review: </h3>
+              {content}
             </li>
           );
         })}
