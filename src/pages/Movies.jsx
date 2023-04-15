@@ -1,7 +1,7 @@
-// import { ToastContainer, toast } from 'react-toastify';
-import { Loader } from 'components/Loader';
-import { MoviesList } from 'components/MoviesList';
-import { SearchBox } from 'components/SearchBox';
+import Notiflix from 'notiflix';
+import { Loader } from 'components/Loader/Loader';
+import { MoviesList } from 'components/MovieList/MoviesList';
+import { SearchBox } from 'components/SearchBox/SearchBox';
 import { searchMovies } from 'components/api/API';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
@@ -25,7 +25,8 @@ const Movies = () => {
     e.preventDefault();
 
     if (request.trim() === '') {
-      return alert('Please enter a request!');
+      Notiflix.Notify.warning('Please enter a request!');
+      return;
     }
 
     setMovies([]);
@@ -42,13 +43,14 @@ const Movies = () => {
       try {
         const results = await searchMovies(movieName);
         if (results.length === 0) {
-          return alert('Something went wrong.Please try again!');
+          Notiflix.Notify.failure('Something went wrong.Please try again!');
+          return;
         }
         setMovies(results);
         setError(null);
       } catch (error) {
         setError(error);
-        alert(
+        Notiflix.Notify.failure(
           'Sorry there are no movies matching your request.Please try again!'
         );
       } finally {
@@ -69,7 +71,6 @@ const Movies = () => {
       {movies.length > 0 && <MoviesList movies={movies} location={location} />}
       {error && <p>{error.message}</p>}
       {loading && <Loader />}
-      {/* <ToastContainer autoClose={4000} position={'top-right'} /> */}
     </main>
   );
 };

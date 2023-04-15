@@ -1,4 +1,4 @@
-import defaultActor from '.././defaultActor/defaultActor.png';
+import defaultActor from '../../defaultImages/defaultActor.png';
 import { CastCardItem, CastCardName, CastContainer } from './CardCast.styled';
 
 const CardCast = ({ cast }) => {

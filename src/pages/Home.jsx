@@ -1,4 +1,4 @@
-import { MoviesList } from 'components/MoviesList';
+import { MoviesList } from 'components/MovieList/MoviesList';
 import { useState, useEffect } from 'react';
 import { getTrendingMovies } from 'components/api/API';
 import { useLocation } from 'react-router-dom';

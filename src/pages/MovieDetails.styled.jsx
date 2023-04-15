@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
 export const AdditionalList = styled.ul`
   display: flex;
   gap: 10px;
@@ -10,6 +11,7 @@ export const AdditionalList = styled.ul`
   list-style: none;
   text-decoration: none;
 `;
+
 export const ItemLink = styled(Link)`
   padding: 8px 16px;
   border-radius: 5px;
@@ -17,6 +19,6 @@ export const ItemLink = styled(Link)`
   color: white;
   background-color: #3885e4;
   &.active {
-    background-color: #dfd357;
+    background-color: #e6d738;
   }
 `;

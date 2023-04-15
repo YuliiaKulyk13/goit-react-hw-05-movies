@@ -1,11 +1,11 @@
-// import { toast } from 'react-toastify';
-import { BackLink } from 'components/BackLink';
+import Notiflix from 'notiflix';
+import { BackLink } from 'components/BackLink/BackLink';
 import { getFullMovie } from 'components/api/API';
 import { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import MovieDescription from 'components/MovieDescription';
-import { AdditionalList } from './MovieDetails.styled';
-import { ItemLink } from 'components/MoviesList.styled';
+import MovieDescription from 'components/MovieDescription/MovieDescription';
+
+import { AdditionalList, ItemLink } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDeatils] = useState([]);
@@ -21,13 +21,16 @@ const MovieDetails = () => {
       try {
         const results = await getFullMovie(movieId);
         if (!results) {
-          return alert('Sorry, there are no matching results by your request!');
+          Notiflix.Notify.warning(
+            'Sorry, there are no matching results by your request!'
+          );
+          return;
         }
         setMovieDeatils(results);
         setError(null);
       } catch (error) {
         setError(error);
-        alert(
+        Notiflix.Notify.failure(
           'Sorry there are no movies matching your request.Please try again!'
         );
       }

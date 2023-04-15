@@ -1,10 +1,10 @@
-// import { toast } from 'react-toastify';
+import Notiflix from 'notiflix';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getReviews } from './api/API';
+import { getReviews } from '../api/API';
 
-import { Loader } from './Loader';
-import ReviewsCard from './ReviewsCard';
+import { Loader } from '../Loader/Loader';
+import ReviewsCard from 'components/ReviewsCard/ReviewsCard';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -20,13 +20,13 @@ const Reviews = () => {
       try {
         const results = await getReviews(movieId);
         if (results.length === 0) {
-          alert('Sorry there are no reviews by your request!');
+          Notiflix.Notify.info('Sorry there are no reviews by your request!');
           return;
         }
         setReviews(results);
       } catch (error) {
         setError(error);
-        alert('Oops,something went wrong.Please try again!');
+        Notiflix.Notify.failure('Oops,something went wrong.Please try again!');
       } finally {
         setLoading(false);
       }
