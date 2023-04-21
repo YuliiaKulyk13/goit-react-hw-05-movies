@@ -1,19 +1,32 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  width: 600px;
+  height: 50px;
   position: relative;
   margin-bottom: 16px;
+  max-width: 100%;
   text-transform: uppercase;
 `;
 
 export const Input = styled.input`
-  height: 20px;
+  width: 60%;
+  height: 70%;
+  padding: 0 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  font-size: 15px;
+  letter-spacing: 2px;
+
+  /* height: 20px;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid black;
-  font: inherit;
+  font: inherit; */
 `;
 
 export const SearchButton = styled.button`
